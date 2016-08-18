@@ -9,8 +9,16 @@ def words(string):
     else:
         return None
 
-#def phone_number(num_string):
-#    return re.search(r"(\(?[0-9]{3}\))?\.?\s?[0-9]{3}\-?\.?[0-9]{4}", num_string)
+
+def phone_number(num_string):
+    phone_numbers = {}
+    try:
+        groups = re.search(r"\(?([0-9]{3})\)?\.?\s?-?([0-9]{3})\-?\.?([0-9]{4})", num_string).groups()
+        phone_numbers["area_code"] = groups[0]
+        phone_numbers["number"] = '-'.join(groups[1:])
+        return phone_numbers
+    except AttributeError:
+        return None
 
 
 #def money(currency_str):

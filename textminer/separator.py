@@ -33,7 +33,18 @@ def money(currency_str):
         return None
 
 
-#def zipcode(num_string):
+def zipcode(num_string):
+    zipcode = {}
+    try:
+        groups = re.search(r"^(\d{5})\-?(\d{4})?$", num_string).groups()
+        zipcode["zip"] = groups[0]
+        if groups[1]:
+            zipcode["plus4"] = groups[1]
+        else:
+            zipcode["plus4"] = None
+        return zipcode
+    except AttributeError:
+        return None
 #    return re.search(r"^\d{5}(\-?\d{4})?$", num_string)
 
 

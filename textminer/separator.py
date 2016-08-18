@@ -73,3 +73,20 @@ def email(address):
         return email
     except AttributeError:
         return None
+
+
+def address(text):
+    address = {}
+    try:
+        groups = re.search(r"(\d+[\w\s]+)[\n,]([\w\s]+), ([A-Z]{2}) (\d{5})\-?(\d{4})?", text).groups()
+        address["address"] = groups[0]
+        address["city"] = groups[1].strip()
+        address["state"] = groups[2]
+        address["zip"] = groups[3]
+        if groups[4]:
+            address["plus4"] = groups[4]
+        else:
+            address["plus4"] = None
+        return address
+    except AttributeError:
+        return None

@@ -21,8 +21,16 @@ def phone_number(num_string):
         return None
 
 
-#def money(currency_str):
-#    return re.search(r"^\$(?:0|[1-9]\d{0,2}(?:,?\d{3})*)(?:\.?\d{2})?$", currency_str)
+def money(currency_str):
+    currency = {}
+    try:
+        groups = re.search(r"(^\$)((?:0|[1-9]\d{0,2}(?:,?\d{3})*)(?:\.?\d{2})?$)", currency_str).groups()
+        currency["currency"] = groups[0]
+        amount = groups[1].replace(',', '')
+        currency["amount"] = float(amount)
+        return currency
+    except AttributeError:
+        return None
 
 
 #def zipcode(num_string):

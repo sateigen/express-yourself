@@ -138,7 +138,6 @@ def test_advanced_date():
     assert not v.date("02/30/2015")
 
 
-@xfail
 def test_email():
     """Some of the emails listed as invalid are actually valid according to
     the email spec, but we will not accept them."""
@@ -158,7 +157,6 @@ def test_email():
     assert not v.email("bonita43@")
 
 
-@xfail
 def test_address():
     """This must be a full address with street number, street, city, state,
     and ZIP code. Again, US-only."""

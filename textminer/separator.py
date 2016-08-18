@@ -62,3 +62,14 @@ def date(date_string):
         return dates
     except AttributeError:
         return None
+
+
+def email(address):
+    email = {}
+    try:
+        groups = re.search(r"([a-z0-9.]+)@([a-z]+\.[a-z]{2,4})", address).groups()
+        email["local"] = groups[0]
+        email["domain"] = groups[1]
+        return email
+    except AttributeError:
+        return None

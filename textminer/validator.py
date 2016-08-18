@@ -41,3 +41,11 @@ def zipcode(num_string):
 
 def date(string):
     return re.search(r"^\d{1,4}[/-]\d{1,2}[/-]\d{1,4}", string)
+
+
+def email(text):
+    return re.search(r"[a-z0-9.]+@[a-z]+\.[a-z]{2,4}", text)
+
+
+def address(text):
+    return re.search(r"(\d+[\w\s]+)[\n,]([\w\s]+), ([A-Z]{2}) (\d{5})\-?(\d{4})?", text)

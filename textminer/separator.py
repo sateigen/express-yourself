@@ -45,32 +45,20 @@ def zipcode(num_string):
         return zipcode
     except AttributeError:
         return None
-#    return re.search(r"^\d{5}(\-?\d{4})?$", num_string)
 
 
-#def date(date):
-#    date_dict = {}
-#    try:
-#        groups = re.match(r'(\d{4})[/-](\d{0,2})[/-](\d{0,2})|(\d{0,2})[/-](\d{0,2})[/-](\d{4})', date).groups()
-#        if groups[0]:
-#            date_dict["year"] = int(groups[0])
-#            date_dict["month"] = int(groups[1])
-#            date_dict["day"] = int(groups[2])
-#        else:
-#            date_dict["month"] = int(groups[3])
-#            date_dict["day"] = int(groups[4])
-#            date_dict["year"] = int(groups[5])
-#        return date_dict
-#    except:
-#        return None
-
-
-
-#if re.search(r"^\d{1,4}[/-]\d{1,2}[/-]\d{1,4}", string)
-
-#possible_emails = ["clinton", "clinton@dreisbach.us", "beanguy@example.org",
- #                  "Email help@example.org for more information",
-#                   "terry@example.org", "@carmen", "what@what", "hi@example.org"]
-#[possibility
-# for possibility in possible_emails
-# if re.search("\A\w+@\w+\.\w{2,3}\Z", possibility)]
+def date(date_string):
+    dates = {}
+    try:
+        groups = re.search(r"(\d{1,4})[/-](\d{1,2})[/-](\d{1,4})", date_string).groups()
+        if len(groups[0]) < 4:
+            dates["month"] = int(groups[0].lstrip('0'))
+            dates["day"] = int(groups[1].lstrip('0'))
+            dates["year"] = int(groups[2])
+        else:
+            dates["year"] = int(groups[0])
+            dates["month"] = int(groups[1].lstrip('0'))
+            dates["day"] = int(groups[2].lstrip('0'))
+        return dates
+    except AttributeError:
+        return None

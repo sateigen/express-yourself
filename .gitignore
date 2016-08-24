@@ -2,3 +2,6 @@
 .envrc
 __pycache__
 .DS_Store
+__pycache__
+.ipynb_checkpoints
+*.py.swp
